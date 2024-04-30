@@ -20,7 +20,7 @@ sh 'mvn pmd:pmd'
 }
   stage('Test report') {  
             steps {  
-                sh 'mvn test'  
+                sh 'mvn test --fail-nerver'  
                 sh 'mvn site'
             }  
         }
