@@ -12,7 +12,7 @@ sh 'mvn -B -DskipTests clean package'
                 sh 'mvn javadoc:jar --fail-never'
             }  
         }  
-}
+
     stage('pmd') {
 steps {
 sh 'mvn pmd:pmd'
@@ -24,7 +24,7 @@ sh 'mvn pmd:pmd'
                 sh 'mvn site'
             }  
         }
-   
+ }
   
   post {
 always {
@@ -34,4 +34,5 @@ archiveArtifacts artifacts: '**/target/**/*.jar', fingerprint: true
 archiveArtifacts artifacts: '**/target/**/*.war', fingerprint: true
 }
 }
+
 }
