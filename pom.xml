@@ -172,6 +172,7 @@
         <artifactId>maven-pmd-plugin</artifactId>
         <version>3.21.2</version> <!-- or use version from pluginManagement -->
         <configuration>
+          <outputDirectory>./target</outputDirectory>
           <!-- failOnViolation is actually true by default, but can be disabled -->
           <failOnViolation>false</failOnViolation>
           <!-- printFailingErrors is pretty useful -->
