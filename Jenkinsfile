@@ -27,6 +27,7 @@ sh 'mvn pmd:pmd'
   
   post {
 always {
+archiveArtifacts artifacts: '**/target/pmd.html', fingerprint: true
 archiveArtifacts artifacts: '**/target/*.jar', fingerprint: true
 archiveArtifacts artifacts: '**/target/surefire-reports/**', fingerprint: true
 archiveArtifacts artifacts: '**/target/site/**', fingerprint: true
