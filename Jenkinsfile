@@ -6,34 +6,10 @@ steps {
 sh 'mvn -B -DskipTests clean package'
 }
 }
-
-  stage('Doc') {  
-            steps {  
-                sh 'mvn javadoc:jar --fail-never'
-            }  
-        }  
-
-    stage('pmd') {
+stage('K8s') {
 steps {
-sh 'mvn pmd:pmd'
+sh 'kubectl set image deployments/hello-node docs=hailong2319/teedy2024_manual:latest'
 }
 }
-  stage('Test report') {  
-            steps {  
-                sh 'mvn test --fail-never'  
-            }  
-        }
- }
-  
-  post {
-always {
-archiveArtifacts artifacts: '**/target/pmd.html', fingerprint: true
-archiveArtifacts artifacts: '**/target/*.jar', fingerprint: true
-archiveArtifacts artifacts: '**/target/surefire-reports/**', fingerprint: true
-archiveArtifacts artifacts: '**/target/site/**', fingerprint: true
-archiveArtifacts artifacts: '**/target/**/*.jar', fingerprint: true
-archiveArtifacts artifacts: '**/target/**/*.war', fingerprint: true
 }
-}
-
 }
